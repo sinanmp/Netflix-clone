@@ -16,13 +16,13 @@ function NavBar({useLocation}) {
           <ul className="flex space-x-4 text-white font-medium max-md:hidden">
           {location.pathname !== '/signup' && location.pathname !== '/login' && (
             <>
-              <li><a href="#" className="hover:text-gray-400">Home</a></li>
-              <li><a href="#" className="hover:text-gray-400">TV Shows</a></li>
-              <li><a href="#" className="hover:text-gray-400">Movies</a></li>
-              <li><a href="#" className="hover:text-gray-400">My List</a></li>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/tv-shows">TV Shows</Link></li>
+              <li><Link to="/movies">Movies</Link></li>
+              <li><Link to="/my-list">My List</Link></li>
             </>
           )}
-        </ul>
+          </ul>
         </div>
         <div className='mr-2 flex gap-2'>
           {!user && (

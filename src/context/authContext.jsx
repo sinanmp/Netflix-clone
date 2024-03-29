@@ -31,11 +31,10 @@ const handleGoogleSignIn = async () => {
     const authInstance = getAuth();
     try {
         const result = await signInWithPopup(authInstance, provider);
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        const user = result.user;
-        console.log(user)
-        setUser(user)
+        const credential = await GoogleAuthProvider.credentialFromResult(result);
+        const token = await credential.accessToken;
+        const user = await result.user;
+        await setUser(user)
     } catch (error) {
         console.error(error);
     }

@@ -27,15 +27,15 @@ function NavBar({useLocation}) {
         <div className='mr-2 flex gap-2'>
           {!user && (
            <>
-            <button onClick={()=> navigate('/signup')} className="bg-red-600 text-white px-4 py-2 rounded-full focus:outline-none hover:bg-red-700">Signup</button>
+            <button onClick={()=>  console.log('hii')} className="bg-black text-white px-4 py-2 rounded-full focus:outline-none hover:bg-red-700">Signup</button>
             <button onClick={()=> navigate('/login')} className="bg-red-600 text-white px-4 py-2 rounded-full focus:outline-none hover:bg-red-700">Sign In</button>
            </>
           )
           }
-          {user &&(
+          {user && location.pathname == '/' &&(
             <>
-            <button onClick={()=> navigate('/profile')} className="bg-red-600 text-white px-4 py-2 rounded-full focus:outline-none hover:bg-red-700">Profile</button>
-            <button onClick={()=> navigate('/login')} className="bg-red-600 text-white px-4 py-2 rounded-full focus:outline-none hover:bg-red-700">Sign Out</button>
+            <button onClick={()=> navigate('/profile')} className="bg-black text-white px-4 py-2 rounded-full focus:outline-none hover:bg-red-700">Profile</button>
+            <button onClick={()=> navigate('/login')} className="bg-red-600 text-white px-4 py-2 rounded-full focus:outline-none hover:bg-red-700">Log Out</button>
             </>
           )
 

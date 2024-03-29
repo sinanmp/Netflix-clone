@@ -1,7 +1,8 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, getAuth } from 'firebase/auth';
-import { auth } from '../services/farebase';
-import { useNavigate } from "react-router-dom";
+import { auth ,db } from '../services/farebase';
+
+import {doc ,onSnapshot,setDoc} from 'firebase/firestore'
 
 const AuthContext = createContext();
 
@@ -29,14 +30,19 @@ export function AuthContextProvider({ children }) {
 const handleGoogleSignIn = async () => {
 
     try {
-        console.log("its coming here")
         const provider = new GoogleAuthProvider();
         const authInstance = getAuth();
         const result = await signInWithPopup(authInstance, provider);
-        const credential = await GoogleAuthProvider.credentialFromResult(result);
-        const token = await credential.accessToken;
-        const user = await result.user;
-        console.log('hii' , user)
+        const credential =  GoogleAuthProvider.credentialFromResult(result);
+        let previouseData
+        onSnapshot(doc(db, 'users', `${user.email}`), (doc) => {
+               previouseData = doc.data().favShows
+          })
+        await setDoc(doc(db,'users' ,result.user.email),{
+            favShows : [] ,
+        })
+        const token =  credential.accessToken;
+        const user = result.user;
         await setUser(user)
     } catch (error) {
         console.error(error);
@@ -44,7 +50,11 @@ const handleGoogleSignIn = async () => {
 };
 
 export function signUpUser(email, password) {
-    return createUserWithEmailAndPassword(auth, email, password)
+    createUserWithEmailAndPassword(auth, email, password)
+    setDoc(doc(db,'users' ,email),{
+        favShows : [] ,
+    })
+
 }
 
 export function loginUser(email, password) {

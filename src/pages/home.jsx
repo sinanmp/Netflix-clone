@@ -1,12 +1,23 @@
-import React from 'react'
-import NavBar from '../components/NavBar/NavBar'
+import React, { useEffect } from 'react'
+import Banner from '../components/Banner'
+import MovieRow from '../components/movieRow'
+import endpoints from '../services/movieServices'
+
 
 function home() {
   return (
-    <div className='container p-0 pt-0 mt-0 top-0'>
-     <NavBar/>
-    </div>
+    <>
+       <Banner/>
+      <MovieRow title='upcoming' url={endpoints.upcoming} />
+      <MovieRow title='trending' url={endpoints.trending} />
+      <MovieRow title='top rated' url={endpoints.topRated} />
+      <MovieRow title='comedy' url={endpoints.comedy} />
+      <MovieRow title='popular' url={endpoints.popular} />
+    </>
   )
 }
 
 export default home
+
+
+

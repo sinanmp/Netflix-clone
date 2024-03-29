@@ -22,6 +22,7 @@ function Signup() {
   }
 
   const handleGoogle = async()=>{
+    e.preventDefault()
     try {
       await handleGoogleSignIn()
       navigate('/')

@@ -19,7 +19,6 @@ function Login() {
     e.preventDefault()
     try {
       await handleGoogleSignIn()
-      navigate('/')
     } catch (error) {
       console.log(error)
     }

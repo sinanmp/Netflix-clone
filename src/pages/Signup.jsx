@@ -22,7 +22,6 @@ function Signup() {
   }
 
   const handleGoogle = async(e)=>{
-    e.preventDefault()
     try {
       await handleGoogleSignIn()
       navigate('/')
@@ -44,14 +43,14 @@ function Signup() {
             <form onSubmit={handleFormSubmit} className='w-full flex flex-col py-4 '>
                <input onChange={(e)=> setEmail(e.target.value)} value={email} className='p-3 my-2 bg-gray-700 rounded' type="email" autoComplete='email' placeholder='email' />
                <input onChange={(e)=> setPassword(e.target.value)} value={password} className='p-3 my-2 bg-gray-700 rounded' type="password" autoComplete='current-password' placeholder='password' />
-               <button className='bg-red-600 py-3 my-6 rounded'>SignUp</button>
+               <button type='submit' className='bg-red-600 py-3 my-6 rounded'>SignUp</button>
                <div className='flex justify-between items-center text-gray-600'>
                 <p>
                   <input className='mr-2' checked={rememberLogin} onChange={(e)=> setrememberLogin(!rememberLogin)} type="checkbox" />Remember me
                 </p>
                 <p>Need Help?</p>
                </div>
-               <div id='btn2' onClick={handleGoogle} className='btn'><img className='googleImage' src="https://i.imgur.com/8qKdyAR.png" alt="" />Continue with Google</div>
+               <div id='btn2' onClick={handleGoogle} className='btn max-md:w-60 self-center'><img className='googleImage mr-2' src="https://i.imgur.com/8qKdyAR.png" alt="" />Continue with Google</div>
                 <p className='my-4 '><span className='text-gray-600 mr-2 ' >Already Subscribed to Netflix? </span>
                 <Link to={'/login'}>Sign In</Link>
                 </p>

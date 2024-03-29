@@ -27,13 +27,16 @@ export function AuthContextProvider({ children }) {
 }
 
 const handleGoogleSignIn = async () => {
-    const provider = new GoogleAuthProvider();
-    const authInstance = getAuth();
+
     try {
+        console.log("its coming here")
+        const provider = new GoogleAuthProvider();
+        const authInstance = getAuth();
         const result = await signInWithPopup(authInstance, provider);
         const credential = await GoogleAuthProvider.credentialFromResult(result);
         const token = await credential.accessToken;
         const user = await result.user;
+        console.log('hii' , user)
         await setUser(user)
     } catch (error) {
         console.error(error);

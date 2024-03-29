@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'  
-import { useAuth, signUpUser ,handleGoogleSignIn } from '../context/authContext' 
+import { signUpUser ,handleGoogleSignIn } from '../context/authContext' 
 import '../assets/google.css'
 function Signup() {
-  const user = useAuth()
-  console.log(user)
-  const [rememberLogin , setrememberLogin] = useState(true)
+ 
+const [rememberLogin , setrememberLogin] = useState(true)
   const [email , setEmail ] = useState('')
   const [password , setPassword] = useState('')
 

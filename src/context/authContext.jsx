@@ -36,7 +36,6 @@ const handleGoogleSignIn = async () => {
         const user = result.user;
         console.log(user)
         setUser(user)
-       window.location = '/'
     } catch (error) {
         console.error(error);
     }

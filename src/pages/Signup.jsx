@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'  
 import { useAuth, signUpUser ,handleGoogleSignIn } from '../context/authContext' 
-
+import '../assets/google.css'
 function Signup() {
   const user = useAuth()
   console.log(user)
@@ -48,9 +48,9 @@ function Signup() {
                 <p>
                   <input className='mr-2' checked={rememberLogin} onChange={(e)=> setrememberLogin(!rememberLogin)} type="checkbox" />Remember me
                 </p>
-                <button className='bg-black-600 py-3 my-6 rounded' onClick={handleGoogle}>signin WithGoogle</button>
                 <p>Need Help?</p>
                </div>
+               <div id='btn2' onClick={handleGoogle} className='btn'><img className='googleImage' src="https://i.imgur.com/8qKdyAR.png" alt="" />Continue with Google</div>
                 <p className='my-4 '><span className='text-gray-600 mr-2 ' >Already Subscribed to Netflix? </span>
                 <Link to={'/login'}>Sign In</Link>
                 </p>

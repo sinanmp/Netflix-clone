@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import {loginUser} from '../context/authContext'
+import {handleGoogleSignIn, loginUser} from '../context/authContext'
 import { useNavigate } from 'react-router-dom'
+import '../assets/google.css'
 function Login() {
   const [rememberLogin , setrememberLogin] = useState(true)
   const [email , setEmail ] = useState('')
@@ -11,6 +12,16 @@ function Login() {
     e.preventDefault()
      await loginUser(email,password)
      navigate('/')
+  }
+
+  
+  const handleGoogle = async()=>{
+    try {
+      await handleGoogleSignIn()
+      navigate('/')
+    } catch (error) {
+      console.log(error)
+    }
   }
   
   return (
@@ -33,6 +44,7 @@ function Login() {
                 </p>
                 <p>Need Help?</p>
                </div>
+               <div id='btn2' onClick={handleGoogle} className='btn'><img className='googleImage' src="https://i.imgur.com/8qKdyAR.png" alt="" />Continue with Google</div>
                 <p className='my-4 '><span className='text-gray-600 mr-2 ' >New to Netflix? </span>
                 <Link to={'/signup'}>Sign Up</Link>
                 </p>

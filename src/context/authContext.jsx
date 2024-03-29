@@ -38,13 +38,12 @@ const handleGoogleSignIn = async () => {
         setUser(user)
        window.location = '/'
     } catch (error) {
-        // Handle errors here
         console.error(error);
     }
 };
 
 export function signUpUser(email, password) {
-    return createUserWithEmailAndPassword(auth, email, password);
+    return createUserWithEmailAndPassword(auth, email, password)
 }
 
 export function loginUser(email, password) {

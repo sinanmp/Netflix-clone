@@ -21,7 +21,7 @@ function Signup() {
     }
   }
 
-  const handleGoogle = async()=>{
+  const handleGoogle = async(e)=>{
     e.preventDefault()
     try {
       await handleGoogleSignIn()
